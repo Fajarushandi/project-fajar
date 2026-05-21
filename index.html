@@ -3,48 +3,464 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fajar Apps</title>
+  <meta name="theme-color" content="#050507" />
+  <title>Fajar Projects</title>
+
   <style>
-    body{
+    *{
       margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    html,body{
+      width:100%;
+      overflow-x:hidden;
+    }
+
+    body{
       min-height:100vh;
-      font-family:Arial,sans-serif;
-      background:linear-gradient(135deg,#111,#333);
+      font-family:Inter, Arial, sans-serif;
       color:white;
+      background:
+        radial-gradient(circle at top left, rgba(99,102,241,.28), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(236,72,153,.16), transparent 32%),
+        radial-gradient(circle at center bottom, rgba(34,197,94,.12), transparent 38%),
+        linear-gradient(160deg,#050507,#111827 55%,#09090f);
+
       display:flex;
       justify-content:center;
-      padding:30px 16px;
+      padding:34px 18px 28px;
     }
-    .wrap{
+
+    .container{
       width:100%;
-      max-width:480px;
+      max-width:540px;
+    }
+
+    .profile{
       text-align:center;
+      margin-bottom:30px;
+      animation:fadeUp .7s ease both;
     }
-    h1{margin-bottom:8px}
-    p{opacity:.75;margin-bottom:28px}
-    a{
-      display:block;
-      background:#000;
+
+    .avatar{
+      width:92px;
+      height:92px;
+      margin:0 auto 20px;
+      border-radius:30px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:32px;
+      font-weight:900;
+      letter-spacing:-2px;
+
       color:white;
-      text-decoration:none;
-      padding:20px;
-      border-radius:16px;
-      margin:14px 0;
-      font-size:18px;
-      font-weight:bold;
-      box-shadow:0 8px 20px rgba(0,0,0,.35);
+
+      background:
+        linear-gradient(
+          135deg,
+          #4f46e5,
+          #7c3aed,
+          #2563eb
+        );
+
+      border:1px solid rgba(255,255,255,.12);
+
+      box-shadow:
+        0 22px 60px rgba(0,0,0,.48),
+        0 0 35px rgba(99,102,241,.28);
     }
-    a:active{transform:scale(.98)}
+
+    h1{
+      font-size:44px;
+      letter-spacing:-2px;
+      line-height:1;
+    }
+
+    .tagline{
+      margin:16px auto 0;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+
+      padding:9px 15px;
+
+      border-radius:999px;
+
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+
+      color:#d1d5db;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.3px;
+    }
+
+    .dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 16px rgba(34,197,94,.9);
+    }
+
+    .section-title{
+      margin:28px 0 14px;
+
+      color:#9ca3af;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:1.8px;
+      text-transform:uppercase;
+    }
+
+    .grid{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .card{
+      width:100%;
+      display:flex;
+      align-items:center;
+      gap:16px;
+
+      padding:18px;
+
+      border-radius:24px;
+
+      text-decoration:none;
+      color:white;
+
+      background:rgba(255,255,255,.07);
+
+      border:1px solid rgba(255,255,255,.1);
+
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+
+      box-shadow:0 18px 45px rgba(0,0,0,.26);
+
+      transition:.22s ease;
+
+      animation:fadeUp .7s ease both;
+    }
+
+    .card:active{
+      transform:scale(.985);
+      background:rgba(255,255,255,.11);
+    }
+
+    .icon{
+      min-width:58px;
+      height:58px;
+
+      border-radius:20px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:26px;
+
+      background:rgba(255,255,255,.12);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .github-icon{
+      background:#0f172a;
+    }
+
+    .tiktok-icon{
+      background:linear-gradient(135deg,#111,#27272a);
+    }
+
+    .ig-icon{
+      background:
+        radial-gradient(circle at 30% 110%,
+        #feda75 0%,
+        #fa7e1e 25%,
+        #d62976 50%,
+        #962fbf 72%,
+        #4f5bd5 100%);
+    }
+
+    .content{
+      flex:1;
+      min-width:0;
+      text-align:left;
+    }
+
+    .content h2{
+      font-size:18px;
+      letter-spacing:-.4px;
+      margin-bottom:5px;
+
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .content p{
+      color:#b4b7c6;
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .arrow{
+      font-size:24px;
+      font-weight:900;
+      color:#8b90a1;
+    }
+
+    .github-svg{
+      width:30px;
+      height:30px;
+      fill:white;
+    }
+
+    .ig-svg{
+      width:28px;
+      height:28px;
+
+      fill:none;
+      stroke:white;
+      stroke-width:2.2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .footer{
+      margin-top:30px;
+
+      text-align:center;
+
+      color:#8b90a1;
+      font-size:13px;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(14px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(min-width:768px){
+      .card:hover{
+        transform:translateY(-3px);
+        background:rgba(255,255,255,.11);
+      }
+    }
+
+    @media(max-width:380px){
+
+      h1{
+        font-size:38px;
+      }
+
+      .card{
+        padding:16px;
+      }
+
+      .content h2{
+        font-size:16px;
+      }
+
+      .icon{
+        min-width:54px;
+        height:54px;
+      }
+    }
   </style>
 </head>
-<body>
-  <div class="wrap">
-    <h1>FAJAR TOOLS</h1>
-    <p>Kumpulan aplikasi</p>
 
-    <a href="https://mmorpg-theta-plum.vercel.app/">MMORPG Tools</a>
-    <a href="https://absensi-weld.vercel.app/">Absensi Kerja</a>
-    <a href="https://lc-calculator.vercel.app/">LC Calculator</a>
-  </div>
+<body>
+
+  <main class="container">
+
+    <section class="profile">
+
+      <div class="avatar">
+        FR
+      </div>
+
+      <h1>Fajar Projects</h1>
+
+      <div class="tagline">
+        <span class="dot"></span>
+        Personal tools hub
+      </div>
+
+    </section>
+
+    <div class="section-title">
+      Tools
+    </div>
+
+    <div class="grid">
+
+      <a class="card"
+         href="https://mmorpg-theta-plum.vercel.app/"
+         target="_blank"
+         rel="noopener noreferrer">
+
+        <div class="icon">🎮</div>
+
+        <div class="content">
+          <h2>MMORPG Translator</h2>
+          <p>Quick chat helper and game translation tools.</p>
+        </div>
+
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="card"
+         href="https://absensi-weld.vercel.app/"
+         target="_blank"
+         rel="noopener noreferrer">
+
+        <div class="icon">🕒</div>
+
+        <div class="content">
+          <h2>Work Attendance Tracker</h2>
+          <p>Shift, working hours, and attendance calculation.</p>
+        </div>
+
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="card"
+         href="https://lc-calculator.vercel.app/"
+         target="_blank"
+         rel="noopener noreferrer">
+
+        <div class="icon">⚔️</div>
+
+        <div class="content">
+          <h2>Lineage Classic Calculator</h2>
+          <p>EXP, Adena, and farming report calculator.</p>
+        </div>
+
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="card"
+         href="https://tiktok-downloader-omega-nine.vercel.app/"
+         target="_blank"
+         rel="noopener noreferrer">
+
+        <div class="icon tiktok-icon">♪</div>
+
+        <div class="content">
+          <h2>TikTok Downloader</h2>
+          <p>Simple TikTok video downloader tool.</p>
+        </div>
+
+        <div class="arrow">›</div>
+      </a>
+
+    </div>
+
+    <div class="section-title">
+      GitHub Projects
+    </div>
+
+    <div class="grid">
+
+      <a class="card"
+         href="https://github.com/Fajarushandi/telethon-auto"
+         target="_blank"
+         rel="noopener noreferrer">
+
+        <div class="icon github-icon">
+
+          <svg class="github-svg" viewBox="0 0 24 24">
+            <path d="M12 .5C5.73.5.75 5.58.75 11.93c0 5.05 3.28 9.33 7.83 10.84.57.11.78-.25.78-.56v-2.14c-3.18.7-3.85-1.38-3.85-1.38-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.2 1.75 1.2 1.02 1.77 2.68 1.26 3.33.96.1-.75.4-1.26.72-1.55-2.54-.29-5.21-1.29-5.21-5.72 0-1.26.44-2.3 1.17-3.11-.12-.29-.51-1.47.11-3.07 0 0 .96-.31 3.14 1.19.91-.26 1.88-.38 2.85-.39.97.01 1.94.13 2.85.39 2.18-1.5 3.14-1.19 3.14-1.19.62 1.6.23 2.78.11 3.07.73.81 1.17 1.85 1.17 3.11 0 4.45-2.68 5.43-5.23 5.71.41.36.77 1.06.77 2.14v3.18c0 .31.21.68.79.56 4.54-1.51 7.82-5.79 7.82-10.84C23.25 5.58 18.27.5 12 .5z"/>
+          </svg>
+
+        </div>
+
+        <div class="content">
+          <h2>Telethon Auto</h2>
+          <p>Telegram automation project repository.</p>
+        </div>
+
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="card"
+         href="https://github.com/Fajarushandi/unfollower-ig-by-fr"
+         target="_blank"
+         rel="noopener noreferrer">
+
+        <div class="icon github-icon">
+
+          <svg class="github-svg" viewBox="0 0 24 24">
+            <path d="M12 .5C5.73.5.75 5.58.75 11.93c0 5.05 3.28 9.33 7.83 10.84.57.11.78-.25.78-.56v-2.14c-3.18.7-3.85-1.38-3.85-1.38-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.2 1.75 1.2 1.02 1.77 2.68 1.26 3.33.96.1-.75.4-1.26.72-1.55-2.54-.29-5.21-1.29-5.21-5.72 0-1.26.44-2.3 1.17-3.11-.12-.29-.51-1.47.11-3.07 0 0 .96-.31 3.14 1.19.91-.26 1.88-.38 2.85-.39.97.01 1.94.13 2.85.39 2.18-1.5 3.14-1.19 3.14-1.19.62 1.6.23 2.78.11 3.07.73.81 1.17 1.85 1.17 3.11 0 4.45-2.68 5.43-5.23 5.71.41.36.77 1.06.77 2.14v3.18c0 .31.21.68.79.56 4.54-1.51 7.82-5.79 7.82-10.84C23.25 5.58 18.27.5 12 .5z"/>
+          </svg>
+
+        </div>
+
+        <div class="content">
+          <h2>IG Unfollower Tool</h2>
+          <p>Instagram unfollower checker repository.</p>
+        </div>
+
+        <div class="arrow">›</div>
+      </a>
+
+    </div>
+
+    <div class="section-title">
+      Connect
+    </div>
+
+    <div class="grid">
+
+      <a class="card"
+         href="https://www.instagram.com/fjrushandi"
+         target="_blank"
+         rel="noopener noreferrer">
+
+        <div class="icon ig-icon">
+
+          <svg class="ig-svg" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="1"></circle>
+          </svg>
+
+        </div>
+
+        <div class="content">
+          <h2>Follow my Instagram</h2>
+          <p>@fjrushandi</p>
+        </div>
+
+        <div class="arrow">›</div>
+      </a>
+
+    </div>
+
+    <div class="footer">
+      Made by Fajar
+    </div>
+
+  </main>
+
 </body>
 </html>
