@@ -1,599 +1,201 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#050507" />
-  <title>Fajar Projects</title>
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      -webkit-tap-highlight-color:transparent;
-    }
-
-    html,body{
-      width:100%;
-      overflow-x:hidden;
-      scroll-behavior:smooth;
-    }
-
-    body{
-      min-height:100vh;
-
-      font-family:
-        Inter,
-        Arial,
-        sans-serif;
-
-      color:white;
-
-      background:
-        radial-gradient(circle at top left,
-        rgba(99,102,241,.28),
-        transparent 35%),
-
-        radial-gradient(circle at bottom right,
-        rgba(236,72,153,.16),
-        transparent 32%),
-
-        radial-gradient(circle at center bottom,
-        rgba(34,197,94,.12),
-        transparent 38%),
-
-        linear-gradient(
-          160deg,
-          #050507,
-          #111827 55%,
-          #09090f
-        );
-
-      display:flex;
-      justify-content:center;
-
-      padding:34px 18px 28px;
-    }
-
-    .container{
-      width:100%;
-      max-width:540px;
-    }
-
-    .profile{
-      text-align:center;
-      margin-bottom:32px;
-
-      animation:fadeUp .7s ease both;
-    }
-
-    .avatar{
-      width:96px;
-      height:96px;
-
-      margin:0 auto 20px;
-
-      border-radius:32px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      font-size:34px;
-      font-weight:900;
-      letter-spacing:-2px;
-
-      color:white;
-
-      background:
-        linear-gradient(
-          270deg,
-          #ff0000,
-          #ff7300,
-          #fffb00,
-          #48ff00,
-          #00ffd5,
-          #002bff,
-          #7a00ff,
-          #ff00c8,
-          #ff0000
-        );
-
-      background-size:1600% 1600%;
-
-      animation:
-        rgbMove 12s ease infinite,
-        fadeUp .7s ease both;
-
-      border:1px solid rgba(255,255,255,.12);
-
-      box-shadow:
-        0 22px 60px rgba(0,0,0,.48),
-        0 0 18px rgba(255,255,255,.08),
-        0 0 55px rgba(124,58,237,.35);
-    }
-
-    h1{
-      font-size:46px;
-      line-height:1;
-      letter-spacing:-2px;
-
-      margin-bottom:16px;
-    }
-
-    .tagline{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-
-      padding:10px 16px;
-
-      border-radius:999px;
-
-      background:rgba(255,255,255,.08);
-
-      border:1px solid rgba(255,255,255,.12);
-
-      color:#d1d5db;
-
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.4px;
-
-      backdrop-filter:blur(10px);
-    }
-
-    .dot{
-      width:7px;
-      height:7px;
-
-      border-radius:50%;
-
-      background:#22c55e;
-
-      box-shadow:
-        0 0 14px rgba(34,197,94,.9);
-    }
-
-    .section-title{
-      margin:28px 0 14px;
-
-      color:#9ca3af;
-
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:2px;
-
-      text-transform:uppercase;
-    }
-
-    .grid{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-
-    .card{
-      width:100%;
-
-      display:flex;
-      align-items:center;
-      gap:16px;
-
-      padding:18px;
-
-      border-radius:26px;
-
-      text-decoration:none;
-      color:white;
-
-      background:
-        rgba(255,255,255,.07);
-
-      border:
-        1px solid rgba(255,255,255,.1);
-
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-
-      box-shadow:
-        0 18px 45px rgba(0,0,0,.26);
-
-      transition:
-        transform .22s ease,
-        background .22s ease;
-
-      animation:fadeUp .7s ease both;
-    }
-
-    .card:active{
-      transform:scale(.985);
-
-      background:
-        rgba(255,255,255,.11);
-    }
-
-    .icon{
-      min-width:58px;
-      height:58px;
-
-      border-radius:20px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      font-size:26px;
-
-      background:
-        rgba(255,255,255,.12);
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12);
-    }
-
-    .tiktok-icon{
-      background:
-        linear-gradient(
-          135deg,
-          #111,
-          #27272a
-        );
-    }
-
-    .github-icon{
-      background:#0f172a;
-    }
-
-    .ig-icon{
-      background:
-        radial-gradient(circle at 30% 110%,
-        #feda75 0%,
-        #fa7e1e 25%,
-        #d62976 50%,
-        #962fbf 72%,
-        #4f5bd5 100%);
-    }
-
-    .content{
-      flex:1;
-      min-width:0;
-
-      text-align:left;
-    }
-
-    .content h2{
-      font-size:18px;
-      letter-spacing:-.4px;
-
-      margin-bottom:5px;
-
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .content p{
-      color:#b4b7c6;
-
-      font-size:13px;
-      line-height:1.45;
-    }
-
-    .arrow{
-      font-size:24px;
-      font-weight:900;
-
-      color:#8b90a1;
-    }
-
-    .github-svg{
-      width:30px;
-      height:30px;
-
-      fill:white;
-    }
-
-    .ig-svg{
-      width:28px;
-      height:28px;
-
-      fill:none;
-      stroke:white;
-
-      stroke-width:2.2;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-    }
-
-    .footer{
-      margin-top:32px;
-
-      text-align:center;
-
-      color:#8b90a1;
-
-      font-size:13px;
-    }
-
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(14px);
-      }
-
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @keyframes rgbMove{
-
-      0%{
-        background-position:0% 50%;
-      }
-
-      50%{
-        background-position:100% 50%;
-      }
-
-      100%{
-        background-position:0% 50%;
-      }
-    }
-
-    @media(min-width:768px){
-
-      .card:hover{
-        transform:translateY(-3px);
-
-        background:
-          rgba(255,255,255,.11);
-      }
-    }
-
-    @media(max-width:380px){
-
-      h1{
-        font-size:39px;
-      }
-
-      .card{
-        padding:16px;
-      }
-
-      .content h2{
-        font-size:16px;
-      }
-
-      .icon{
-        min-width:54px;
-        height:54px;
-      }
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Situs Sedang Tidak Tersedia</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#0c0c0c;
+  color:#fff;
+  overflow:hidden;
+  position:relative;
+}
+canvas { 
+  position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;
+}
+.container {
+  position: relative;
+  z-index:1;
+  width:90%;
+  max-width:400px;
+  background:#111;
+  border-radius:16px;
+  padding:3rem 2rem;
+  text-align:center;
+  box-shadow:0 12px 40px rgba(0,0,0,0.7);
+  border-top: 4px solid #ff5722;
+  animation: fadeIn 0.8s ease forwards;
+}
+@keyframes fadeIn { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
+
+.icon-lock {
+  width:60px;
+  height:60px;
+  margin:0 auto 1rem;
+  border:2px solid #ff5722;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+.icon-lock:before {
+  content:"\1F512";
+  font-size:28px;
+  color:#ff5722;
+}
+h1 { font-size:2rem; margin-bottom:1rem; font-weight:600; }
+p { font-size:1rem; color:#ccc; margin-bottom:2rem; line-height:1.4; }
+button {
+  padding:1rem 2rem;
+  font-size:1rem;
+  border:none;
+  border-radius:10px;
+  background:#ff5722;
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 5px 20px rgba(255,87,34,0.5);
+  transition: all 0.3s ease;
+}
+button:hover { transform: translateY(-3px); background:#e64a19; box-shadow:0 8px 25px rgba(255,87,34,0.7); }
+button:disabled { background:#555; cursor:not-allowed; box-shadow:none; }
+
+.info-box {
+  margin-top:1.5rem;
+  padding:1rem;
+  background:#1a1a1a;
+  border-radius:10px;
+  font-size:0.9rem;
+  color:#aaa;
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+}
+.info-box:before { content:"\2139"; font-size:1.1rem; color:#aaa; }
+
+@media(max-width:480px){
+  .container { padding:2rem 1.5rem; }
+  h1 { font-size:1.5rem; }
+}
+</style>
 </head>
-
 <body>
-
-  <main class="container">
-
-    <section class="profile">
-
-      <div class="avatar">
-        FR
-      </div>
-
-      <h1>Fajar Projects</h1>
-
-      <div class="tagline">
-        <span class="dot"></span>
-        Personal tools hub
-      </div>
-
-    </section>
-
-    <div class="section-title">
-  Tools
+<canvas id="bg"></canvas>
+<div class="container">
+  <div class="icon-lock"></div>
+  <h1>Akses Situs Sementara Tidak Tersedia</h1>
+  <p>Saat ini situs ini tidak tersedia dan tidak dapat diakses. Silakan coba kembali nanti.</p>
+  <button id="retryBtn">Coba Lagi</button>
+  <div class="info-box">
+    Akses saat ini sedang dinonaktifkan. Silakan hubungi administrator jika ini berlanjut.
+  </div>
 </div>
 
-<div class="grid">
+<script>
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let W = canvas.width = window.innerWidth;
+let H = canvas.height = window.innerHeight;
 
-  <a class="card"
-     href="https://mmorpg-theta-plum.vercel.app/"
-     target="_blank"
-     rel="noopener noreferrer">
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random()*W;
+    this.y = Math.random()*H;
+    this.r = Math.random()*2 + 0.5;
+    this.dx = (Math.random()-0.5)*0.4;
+    this.dy = (Math.random()-0.5)*0.4;
+    this.alpha = Math.random()*0.25 + 0.05;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
+    ctx.fill();
+    this.x += this.dx;
+    this.y += this.dy;
+    if(this.x<0||this.x>W) this.dx*=-1;
+    if(this.y<0||this.y>H) this.dy*=-1;
+  }
+}
 
-    <div class="icon">🎮</div>
+let particles = [];
+for(let i=0;i<80;i++) particles.push(new Particle());
 
-    <div class="content">
-      <h2>MMORPG Translator</h2>
-      <p>Quick chat helper and game translation tools.</p>
-    </div>
+let mouse = {x: W/2, y: H/2};
+window.addEventListener('mousemove', e => { mouse.x=e.clientX; mouse.y=e.clientY; });
 
-    <div class="arrow">›</div>
+function drawLines() {
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      let p1=particles[i], p2=particles[j];
+      let dx=p1.x-p2.x, dy=p1.y-p2.y;
+      let dist=Math.sqrt(dx*dx + dy*dy);
+      if(dist<80){
+        ctx.beginPath();
+        ctx.moveTo(p1.x,p1.y);
+        ctx.lineTo(p2.x,p2.y);
+        let alpha = 0.2*(1-dist/80);
+        ctx.strokeStyle=`rgba(255,87,34,${alpha})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+    }
+  }
+}
 
-  </a>
+function animate(){
+  ctx.clearRect(0,0,W,H);
+  for(let p of particles){
+    let dx = p.x - mouse.x;
+    let dy = p.y - mouse.y;
+    let dist = Math.sqrt(dx*dx + dy*dy);
+    if(dist<80){
+      let angle = Math.atan2(dy,dx);
+      p.x += Math.cos(angle)*0.4;
+      p.y += Math.sin(angle)*0.4;
+    }
+    p.draw();
+  }
+  drawLines();
+  requestAnimationFrame(animate);
+}
+animate();
 
-  <a class="card"
-     href="https://absensi-weld.vercel.app/"
-     target="_blank"
-     rel="noopener noreferrer">
+window.addEventListener('resize',()=>{
+  W=canvas.width=window.innerWidth;
+  H=canvas.height=window.innerHeight;
+});
 
-    <div class="icon">🕒</div>
-
-    <div class="content">
-      <h2>Work Attendance Tracker</h2>
-      <p>Shift, working hours, and attendance calculation.</p>
-    </div>
-
-    <div class="arrow">›</div>
-
-  </a>
-
-  <a class="card"
-     href="https://lc-calculator.vercel.app/"
-     target="_blank"
-     rel="noopener noreferrer">
-
-    <div class="icon">⚔️</div>
-
-    <div class="content">
-      <h2>Lineage Classic Calculator</h2>
-      <p>EXP, Adena, and farming report calculator.</p>
-    </div>
-
-    <div class="arrow">›</div>
-
-  </a>
-
-  <a class="card"
-     href="https://lc-spell.vercel.app/"
-     target="_blank"
-     rel="noopener noreferrer">
-
-    <div class="icon">📖</div>
-
-    <div class="content">
-      <h2>Lineage Classic Spell Codex</h2>
-      <p>Complete spell database with icons and categories.</p>
-    </div>
-
-    <div class="arrow">›</div>
-
-  </a>
-
-  <a class="card"
-     href="https://tiktok-downloader-omega-nine.vercel.app/"
-     target="_blank"
-     rel="noopener noreferrer">
-
-    <div class="icon tiktok-icon">
-      ♪
-    </div>
-
-    <div class="content">
-      <h2>TikTok Downloader</h2>
-      <p>Simple TikTok video downloader tool.</p>
-    </div>
-
-    <div class="arrow">›</div>
-
-  </a>
-
-</div>
-
-    <div class="section-title">
-      GitHub Projects
-    </div>
-
-    <div class="grid">
-
-      <a class="card"
-         href="https://github.com/Fajarushandi/telethon-auto"
-         target="_blank"
-         rel="noopener noreferrer">
-
-        <div class="icon github-icon">
-
-          <svg class="github-svg" viewBox="0 0 24 24">
-            <path d="M12 .5C5.73.5.75 5.58.75 11.93c0 5.05 3.28 9.33 7.83 10.84.57.11.78-.25.78-.56v-2.14c-3.18.7-3.85-1.38-3.85-1.38-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.2 1.75 1.2 1.02 1.77 2.68 1.26 3.33.96.1-.75.4-1.26.72-1.55-2.54-.29-5.21-1.29-5.21-5.72 0-1.26.44-2.3 1.17-3.11-.12-.29-.51-1.47.11-3.07 0 0 .96-.31 3.14 1.19.91-.26 1.88-.38 2.85-.39.97.01 1.94.13 2.85.39 2.18-1.5 3.14-1.19 3.14-1.19.62 1.6.23 2.78.11 3.07.73.81 1.17 1.85 1.17 3.11 0 4.45-2.68 5.43-5.23 5.71.41.36.77 1.06.77 2.14v3.18c0 .31.21.68.79.56 4.54-1.51 7.82-5.79 7.82-10.84C23.25 5.58 18.27.5 12 .5z"/>
-          </svg>
-
-        </div>
-
-        <div class="content">
-          <h2>Telethon Auto</h2>
-          <p>Telegram automation project repository.</p>
-        </div>
-
-        <div class="arrow">›</div>
-
-      </a>
-
-      <a class="card"
-         href="https://github.com/Fajarushandi/unfollower-ig-by-fr"
-         target="_blank"
-         rel="noopener noreferrer">
-
-        <div class="icon github-icon">
-
-          <svg class="github-svg" viewBox="0 0 24 24">
-            <path d="M12 .5C5.73.5.75 5.58.75 11.93c0 5.05 3.28 9.33 7.83 10.84.57.11.78-.25.78-.56v-2.14c-3.18.7-3.85-1.38-3.85-1.38-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.2 1.75 1.2 1.02 1.77 2.68 1.26 3.33.96.1-.75.4-1.26.72-1.55-2.54-.29-5.21-1.29-5.21-5.72 0-1.26.44-2.3 1.17-3.11-.12-.29-.51-1.47.11-3.07 0 0 .96-.31 3.14 1.19.91-.26 1.88-.38 2.85-.39.97.01 1.94.13 2.85.39 2.18-1.5 3.14-1.19 3.14-1.19.62 1.6.23 2.78.11 3.07.73.81 1.17 1.85 1.17 3.11 0 4.45-2.68 5.43-5.23 5.71.41.36.77 1.06.77 2.14v3.18c0 .31.21.68.79.56 4.54-1.51 7.82-5.79 7.82-10.84C23.25 5.58 18.27.5 12 .5z"/>
-          </svg>
-
-        </div>
-
-        <div class="content">
-          <h2>IG Unfollower Tool</h2>
-          <p>Instagram unfollower checker repository.</p>
-        </div>
-
-        <div class="arrow">›</div>
-
-      </a>
-
-    </div>
-
-    <div class="section-title">
-      Connect
-    </div>
-
-    <div class="grid">
-
-      <a class="card"
-         href="https://www.instagram.com/fjrushandi"
-         target="_blank"
-         rel="noopener noreferrer">
-
-        <div class="icon ig-icon">
-
-          <svg class="ig-svg" viewBox="0 0 24 24">
-
-            <rect
-              x="3"
-              y="3"
-              width="18"
-              height="18"
-              rx="5">
-            </rect>
-
-            <circle
-              cx="12"
-              cy="12"
-              r="4">
-            </circle>
-
-            <circle
-              cx="17.5"
-              cy="6.5"
-              r="1">
-            </circle>
-
-          </svg>
-
-        </div>
-
-        <div class="content">
-          <h2>Follow my Instagram</h2>
-          <p>@fjrushandi</p>
-        </div>
-
-        <div class="arrow">›</div>
-
-      </a>
-
-    </div>
-
-    <div class="footer">
-      Made by Fajar
-    </div>
-
-  </main>
-
+// Retry button countdown
+const retryBtn = document.getElementById('retryBtn');
+let cooldown = false;
+retryBtn.addEventListener('click', ()=>{
+  if(cooldown) return;
+  cooldown = true;
+  retryBtn.disabled = true;
+  let seconds=5;
+  const originalText = retryBtn.innerText;
+  retryBtn.innerText = `${originalText} (${seconds})`;
+  const interval = setInterval(()=>{
+    seconds--;
+    retryBtn.innerText = `${originalText} (${seconds})`;
+    if(seconds<=0){
+      clearInterval(interval);
+      retryBtn.innerText = originalText;
+      retryBtn.disabled=false;
+      cooldown=false;
+      window.location.reload();
+    }
+  },1000);
+});
+</script>
 </body>
 </html>
