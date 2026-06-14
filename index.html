@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<link rel="icon" href="logo.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#050507" />
-  <title>Fajar Projects</title>
+  <title>Fajar Projects | Tools, Automation & MMORPG Utilities</title>
 
   <style>
 
@@ -69,51 +70,15 @@
       animation:fadeUp .7s ease both;
     }
 
-    .avatar{
-      width:96px;
-      height:96px;
+.hero-logo{
+  width:180px;
+  max-width:80%;
 
-      margin:0 auto 20px;
+  display:block;
+  margin:0 auto 22px;
 
-      border-radius:32px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      font-size:34px;
-      font-weight:900;
-      letter-spacing:-2px;
-
-      color:white;
-
-      background:
-        linear-gradient(
-          270deg,
-          #ff0000,
-          #ff7300,
-          #fffb00,
-          #48ff00,
-          #00ffd5,
-          #002bff,
-          #7a00ff,
-          #ff00c8,
-          #ff0000
-        );
-
-      background-size:1600% 1600%;
-
-      animation:
-        rgbMove 12s ease infinite,
-        fadeUp .7s ease both;
-
-      border:1px solid rgba(255,255,255,.12);
-
-      box-shadow:
-        0 22px 60px rgba(0,0,0,.48),
-        0 0 18px rgba(255,255,255,.08),
-        0 0 55px rgba(124,58,237,.35);
-    }
+  animation:fadeUp .7s ease both;
+}
 
     h1{
       font-size:46px;
@@ -202,8 +167,10 @@
         0 18px 45px rgba(0,0,0,.26);
 
       transition:
-        transform .22s ease,
-        background .22s ease;
+  transform .22s ease,
+  background .22s ease,
+  border-color .22s ease,
+  box-shadow .22s ease;
 
       animation:fadeUp .7s ease both;
     }
@@ -329,31 +296,23 @@
         transform:translateY(0);
       }
     }
-
-    @keyframes rgbMove{
-
-      0%{
-        background-position:0% 50%;
-      }
-
-      50%{
-        background-position:100% 50%;
-      }
-
-      100%{
-        background-position:0% 50%;
-      }
-    }
-
+    
     @media(min-width:768px){
 
-      .card:hover{
-        transform:translateY(-3px);
+  .card:hover{
+    transform:translateY(-4px);
 
-        background:
-          rgba(255,255,255,.11);
-      }
-    }
+    border-color:
+      rgba(255,255,255,.18);
+
+    background:
+      rgba(255,255,255,.11);
+
+    box-shadow:
+      0 25px 60px rgba(0,0,0,.35);
+  }
+
+}
 
     @media(max-width:380px){
 
@@ -384,15 +343,18 @@
 
     <section class="profile">
 
-      <div class="avatar">
-        FR
-      </div>
+      <img
+  class="hero-logo"
+  src="logo.png"
+  alt="FR Logo"
+  loading="eager"
+  decoding="async">
 
       <h1>Fajar Projects</h1>
 
       <div class="tagline">
         <span class="dot"></span>
-        Personal tools hub
+        MMORPG • Automation • Productivity
       </div>
 
     </section>
@@ -590,8 +552,8 @@
     </div>
 
     <div class="footer">
-      Made by Fajar
-    </div>
+  © 2026 Fajar Projects
+</div>
 
   </main>
 
