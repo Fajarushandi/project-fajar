@@ -2,9 +2,12 @@
 <html lang="id">
   <head>
     <link rel="icon" href="logo.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#050507" />
+    <meta name="description" content="Kumpulan tools, automation, dan utilities MMORPG buatan Fajar" />
     <title>Fajar Projects | Tools, Automation & MMORPG Utilities</title>
 
     <style>
@@ -317,7 +320,7 @@
       <div class="section-title">Tools</div>
 
       <div class="grid">
-        <a class="card" href="https://mmorpg-theta-plum.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <a class="card" href="https://lc-mmorpg.netlify.app/" target="_blank" rel="noopener noreferrer">
           <div class="icon">🎮</div>
 
           <div class="content">
@@ -328,7 +331,7 @@
           <div class="arrow">›</div>
         </a>
 
-        <a class="card" href="https://absensi-weld.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <a class="card" href="https://iniabsensi.netlify.app/" target="_blank" rel="noopener noreferrer">
           <div class="icon">🕒</div>
 
           <div class="content">
@@ -339,7 +342,7 @@
           <div class="arrow">›</div>
         </a>
 
-        <a class="card" href="https://lc-calculator.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <a class="card" href="https://lc-calc.netlify.app/" target="_blank" rel="noopener noreferrer">
           <div class="icon">⚔️</div>
 
           <div class="content">
@@ -350,7 +353,7 @@
           <div class="arrow">›</div>
         </a>
 
-        <a class="card" href="https://lc-spell.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <a class="card" href="https://lc-spell.netlify.app/" target="_blank" rel="noopener noreferrer">
           <div class="icon">📖</div>
 
           <div class="content">
@@ -363,7 +366,7 @@
 
         <a
           class="card"
-          href="https://tiktok-downloader-omega-nine.vercel.app/"
+          href="https://tiktokdl-f.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -446,5 +449,32 @@
 
       <div class="footer">© 2026 Fajar Projects</div>
     </main>
+
+    <script>
+      // Registrasi service worker + auto-update.
+      // Tanpa ini, update link tools baru tidak langsung kepakai
+      // karena browser bisa terus pakai versi cache lama.
+      if ("serviceWorker" in navigator) {
+        let refreshing = false;
+
+        navigator.serviceWorker.register("/sw.js").then((reg) => {
+          reg.addEventListener("updatefound", () => {
+            const newWorker = reg.installing;
+            if (!newWorker) return;
+            newWorker.addEventListener("statechange", () => {
+              if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+                if (reg.waiting) reg.waiting.postMessage("SKIP_WAITING");
+              }
+            });
+          });
+        });
+
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          if (refreshing) return;
+          refreshing = true;
+          window.location.reload();
+        });
+      }
+    </script>
   </body>
 </html>
