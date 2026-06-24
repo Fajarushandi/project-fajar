@@ -1,480 +1,535 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-  <head>
-    <link rel="icon" href="logo.png" />
-    <link rel="manifest" href="manifest.json" />
-    <link rel="apple-touch-icon" href="icon-192.png" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#050507" />
-    <meta name="description" content="Kumpulan tools, automation, dan utilities MMORPG buatan Fajar" />
-    <title>Fajar Projects | Tools, Automation & MMORPG Utilities</title>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      html,
-      body {
-        width: 100%;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-      }
-
-      body {
-        min-height: 100vh;
-
-        font-family: Inter, Arial, sans-serif;
-
-        color: white;
-
-        background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.28), transparent 35%),
-          radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.16), transparent 32%),
-          radial-gradient(circle at center bottom, rgba(34, 197, 94, 0.12), transparent 38%),
-          linear-gradient(160deg, #050507, #111827 55%, #09090f);
-
-        display: flex;
-        justify-content: center;
-
-        padding: 34px 18px 28px;
-      }
-
-      .container {
-        width: 100%;
-        max-width: 720px;
-      }
-
-      .profile {
-        text-align: center;
-        margin-bottom: 32px;
-
-        animation: fadeUp 0.7s ease both;
-      }
-
-      .hero-logo {
-        width: 180px;
-        max-width: 80%;
-
-        display: block;
-        margin: 0 auto 22px;
-
-        animation: fadeUp 0.7s ease both;
-      }
-
-      h1 {
-        font-size: 46px;
-        line-height: 1;
-        letter-spacing: -2px;
-
-        margin-bottom: 16px;
-      }
-
-      .tagline {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-
-        padding: 10px 16px;
-
-        border-radius: 999px;
-
-        background: rgba(255, 255, 255, 0.08);
-
-        border: 1px solid rgba(255, 255, 255, 0.12);
-
-        color: #d1d5db;
-
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.4px;
-
-        backdrop-filter: blur(10px);
-      }
-
-      .dot {
-        width: 7px;
-        height: 7px;
-
-        border-radius: 50%;
-
-        background: #22c55e;
-
-        box-shadow: 0 0 14px rgba(34, 197, 94, 0.9);
-      }
-
-      .section-title {
-        margin: 28px 0 14px;
-
-        color: #9ca3af;
-
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 2px;
-
-        text-transform: uppercase;
-      }
-
-      .grid {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-
-      .card {
-        width: 100%;
-
-        display: flex;
-        align-items: center;
-        gap: 16px;
-
-        padding: 18px;
-
-        border-radius: 26px;
-
-        text-decoration: none;
-        color: white;
-
-        background: rgba(255, 255, 255, 0.07);
-
-        border: 1px solid rgba(255, 255, 255, 0.1);
-
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-
-        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.26);
-
-        transition:
-          transform 0.22s ease,
-          background 0.22s ease,
-          border-color 0.22s ease,
-          box-shadow 0.22s ease;
-
-        animation: fadeUp 0.7s ease both;
-      }
-
-      .card:active {
-        transform: scale(0.985);
-
-        background: rgba(255, 255, 255, 0.11);
-      }
-
-      .icon {
-        min-width: 58px;
-        height: 58px;
-
-        border-radius: 20px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        font-size: 26px;
-
-        background: rgba(255, 255, 255, 0.12);
-
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
-      }
-
-      .tiktok-icon {
-        background: linear-gradient(135deg, #111, #27272a);
-      }
-
-      .github-icon {
-        background: #0f172a;
-      }
-
-      .ig-icon {
-        background: radial-gradient(
-          circle at 30% 110%,
-          #feda75 0%,
-          #fa7e1e 25%,
-          #d62976 50%,
-          #962fbf 72%,
-          #4f5bd5 100%
-        );
-      }
-
-      .content {
-        flex: 1;
-        min-width: 0;
-
-        text-align: left;
-      }
-
-      .content h2 {
-        font-size: 18px;
-        letter-spacing: -0.4px;
-
-        margin-bottom: 5px;
-
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .content p {
-        color: #b4b7c6;
-
-        font-size: 13px;
-        line-height: 1.45;
-      }
-
-      .arrow {
-        font-size: 24px;
-        font-weight: 900;
-
-        color: #8b90a1;
-      }
-
-      .github-svg {
-        width: 30px;
-        height: 30px;
-
-        fill: white;
-      }
-
-      .ig-svg {
-        width: 28px;
-        height: 28px;
-
-        fill: none;
-        stroke: white;
-
-        stroke-width: 2.2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      .footer {
-        margin-top: 32px;
-
-        text-align: center;
-
-        color: #8b90a1;
-
-        font-size: 13px;
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(14px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @media (min-width: 768px) {
-        .card:hover {
-          transform: translateY(-4px);
-
-          border-color: rgba(255, 255, 255, 0.18);
-
-          background: rgba(255, 255, 255, 0.11);
-
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-        }
-      }
-
-      @media (max-width: 380px) {
-        h1 {
-          font-size: 39px;
-        }
-
-        .card {
-          padding: 16px;
-        }
-
-        .content h2 {
-          font-size: 16px;
-        }
-
-        .icon {
-          min-width: 54px;
-          height: 54px;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <main class="container">
-      <section class="profile">
-        <img class="hero-logo" src="logo.png" alt="FR Logo" loading="eager" decoding="async" />
-
-        <h1>Fajar Projects</h1>
-
-        <div class="tagline">
-          <span class="dot"></span>
-          MMORPG • Automation • Productivity
-        </div>
-      </section>
-
-      <div class="section-title">Tools</div>
-
-      <div class="grid">
-        <a class="card" href="https://lc-mmorpg.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="icon">🎮</div>
-
-          <div class="content">
-            <h2>MMORPG Translator</h2>
-            <p>Quick chat helper and game translation tools.</p>
-          </div>
-
-          <div class="arrow">›</div>
-        </a>
-
-        <a class="card" href="https://iniabsensi.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="icon">🕒</div>
-
-          <div class="content">
-            <h2>Work Attendance Tracker</h2>
-            <p>Shift, working hours, and attendance calculation.</p>
-          </div>
-
-          <div class="arrow">›</div>
-        </a>
-
-        <a class="card" href="https://lc-calc.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="icon">⚔️</div>
-
-          <div class="content">
-            <h2>Lineage Classic Calculator</h2>
-            <p>EXP, Adena, and farming report calculator.</p>
-          </div>
-
-          <div class="arrow">›</div>
-        </a>
-
-        <a class="card" href="https://lc-spell.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="icon">📖</div>
-
-          <div class="content">
-            <h2>Lineage Classic Spell Codex</h2>
-            <p>Complete spell database with icons and categories.</p>
-          </div>
-
-          <div class="arrow">›</div>
-        </a>
-
-        <a
-          class="card"
-          href="https://tiktokdl-f.netlify.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div class="icon tiktok-icon">♪</div>
-
-          <div class="content">
-            <h2>TikTok Downloader</h2>
-            <p>Simple TikTok video downloader tool.</p>
-          </div>
-
-          <div class="arrow">›</div>
-        </a>
-      </div>
-
-      <div class="section-title">GitHub Projects</div>
-
-      <div class="grid">
-        <a class="card" href="https://github.com/Fajarushandi/telethon-auto" target="_blank" rel="noopener noreferrer">
-          <div class="icon github-icon">
-            <svg class="github-svg" viewBox="0 0 24 24">
-              <path
-                d="M12 .5C5.73.5.75 5.58.75 11.93c0 5.05 3.28 9.33 7.83 10.84.57.11.78-.25.78-.56v-2.14c-3.18.7-3.85-1.38-3.85-1.38-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.2 1.75 1.2 1.02 1.77 2.68 1.26 3.33.96.1-.75.4-1.26.72-1.55-2.54-.29-5.21-1.29-5.21-5.72 0-1.26.44-2.3 1.17-3.11-.12-.29-.51-1.47.11-3.07 0 0 .96-.31 3.14 1.19.91-.26 1.88-.38 2.85-.39.97.01 1.94.13 2.85.39 2.18-1.5 3.14-1.19 3.14-1.19.62 1.6.23 2.78.11 3.07.73.81 1.17 1.85 1.17 3.11 0 4.45-2.68 5.43-5.23 5.71.41.36.77 1.06.77 2.14v3.18c0 .31.21.68.79.56 4.54-1.51 7.82-5.79 7.82-10.84C23.25 5.58 18.27.5 12 .5z"
-              />
-            </svg>
-          </div>
-
-          <div class="content">
-            <h2>Telethon Auto</h2>
-            <p>Telegram automation project repository.</p>
-          </div>
-
-          <div class="arrow">›</div>
-        </a>
-
-        <a
-          class="card"
-          href="https://github.com/Fajarushandi/unfollower-ig-by-fr"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div class="icon github-icon">
-            <svg class="github-svg" viewBox="0 0 24 24">
-              <path
-                d="M12 .5C5.73.5.75 5.58.75 11.93c0 5.05 3.28 9.33 7.83 10.84.57.11.78-.25.78-.56v-2.14c-3.18.7-3.85-1.38-3.85-1.38-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.2 1.75 1.2 1.02 1.77 2.68 1.26 3.33.96.1-.75.4-1.26.72-1.55-2.54-.29-5.21-1.29-5.21-5.72 0-1.26.44-2.3 1.17-3.11-.12-.29-.51-1.47.11-3.07 0 0 .96-.31 3.14 1.19.91-.26 1.88-.38 2.85-.39.97.01 1.94.13 2.85.39 2.18-1.5 3.14-1.19 3.14-1.19.62 1.6.23 2.78.11 3.07.73.81 1.17 1.85 1.17 3.11 0 4.45-2.68 5.43-5.23 5.71.41.36.77 1.06.77 2.14v3.18c0 .31.21.68.79.56 4.54-1.51 7.82-5.79 7.82-10.84C23.25 5.58 18.27.5 12 .5z"
-              />
-            </svg>
-          </div>
-
-          <div class="content">
-            <h2>IG Unfollower Tool</h2>
-            <p>Instagram unfollower checker repository.</p>
-          </div>
-
-          <div class="arrow">›</div>
-        </a>
-      </div>
-
-      <div class="section-title">Connect</div>
-
-      <div class="grid">
-        <a class="card" href="https://www.instagram.com/fjrushandi" target="_blank" rel="noopener noreferrer">
-          <div class="icon ig-icon">
-            <svg class="ig-svg" viewBox="0 0 24 24">
-              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-
-              <circle cx="12" cy="12" r="4"></circle>
-
-              <circle cx="17.5" cy="6.5" r="1"></circle>
-            </svg>
-          </div>
-
-          <div class="content">
-            <h2>Follow my Instagram</h2>
-            <p>@fjrushandi</p>
-          </div>
-
-          <div class="arrow">›</div>
-        </a>
-      </div>
-
-      <div class="footer">© 2026 Fajar Projects</div>
-    </main>
-
-    <script>
-      // Registrasi service worker + auto-update.
-      // Tanpa ini, update link tools baru tidak langsung kepakai
-      // karena browser bisa terus pakai versi cache lama.
-      if ("serviceWorker" in navigator) {
-        let refreshing = false;
-
-        navigator.serviceWorker.register("/sw.js").then((reg) => {
-          reg.addEventListener("updatefound", () => {
-            const newWorker = reg.installing;
-            if (!newWorker) return;
-            newWorker.addEventListener("statechange", () => {
-              if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
-                if (reg.waiting) reg.waiting.postMessage("SKIP_WAITING");
-              }
-            });
-          });
-        });
-
-        navigator.serviceWorker.addEventListener("controllerchange", () => {
-          if (refreshing) return;
-          refreshing = true;
-          window.location.reload();
-        });
-      }
-    </script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akses Tidak Tersedia</title>
+
+<!-- Non-blocking font load: preconnect + link instead of @import -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"></noscript>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg:        #080810;
+    --surface:   #0f0f1a;
+    --border:    rgba(255,255,255,0.07);
+    --accent:    #e05c2a;
+    --accent2:   #9b4de0;
+    --text:      #e8e8f0;
+    --muted:     #9999ad;       /* was #6b6b80 — bumped for contrast */
+    --footer:    rgba(255,255,255,0.42); /* was 0.15 — fails WCAG, now passes AA on dark bg */
+    --glow-a:    rgba(224, 92, 42, 0.35);
+    --glow-b:    rgba(155, 77, 224, 0.25);
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ── Background canvas ── */
+  canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── Ambient orbs ── */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
+    animation: drift 12s ease-in-out infinite alternate;
+  }
+  .orb-1 {
+    width: 420px; height: 420px;
+    top: -120px; left: -100px;
+    background: var(--glow-a);
+    animation-duration: 14s;
+  }
+  .orb-2 {
+    width: 380px; height: 380px;
+    bottom: -100px; right: -80px;
+    background: var(--glow-b);
+    animation-duration: 18s;
+    animation-delay: -6s;
+  }
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(30px, 20px) scale(1.08); }
+  }
+
+  /* ── Card ── */
+  .card {
+    position: relative;
+    z-index: 1;
+    width: min(440px, 92vw);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 3rem 2.5rem 2.5rem;
+    text-align: center;
+    background-image:
+      linear-gradient(
+        160deg,
+        rgba(255,255,255,0.04) 0%,
+        transparent 50%
+      );
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.04),
+      0 32px 80px rgba(0,0,0,0.6),
+      0 0 60px var(--glow-a);
+    animation: fadeUp 0.7s cubic-bezier(.22,.68,0,1.2) both;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(28px) scale(0.97); }
+    to   { opacity:1; transform: translateY(0)    scale(1);    }
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+    border-radius: 1px;
+  }
+
+  /* ── Icon ── */
+  .icon-wrap {
+    width: 72px; height: 72px;
+    margin: 0 auto 1.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 40% 35%, rgba(224,92,42,0.18), rgba(155,77,224,0.10));
+    border: 1px solid rgba(224,92,42,0.35);
+    box-shadow: 0 0 28px var(--glow-a), inset 0 1px 0 rgba(255,255,255,0.06);
+    position: relative;
+    animation: pulse-ring 3s ease-in-out infinite;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 20px var(--glow-a), inset 0 1px 0 rgba(255,255,255,0.06); }
+    50%       { box-shadow: 0 0 40px var(--glow-a), 0 0 70px rgba(224,92,42,0.15), inset 0 1px 0 rgba(255,255,255,0.06); }
+  }
+
+  .icon-wrap svg {
+    width: 30px; height: 30px;
+    stroke: var(--accent);
+    stroke-width: 1.8;
+    fill: none;
+    filter: drop-shadow(0 0 6px var(--accent));
+  }
+
+  /* ── Status pill ── */
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(224,92,42,0.1);
+    border: 1px solid rgba(224,92,42,0.25);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: blink 1.4s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%,100% { opacity: 1; }
+    50%      { opacity: 0.25; }
+  }
+
+  /* ── Headings ── */
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
+    background: linear-gradient(135deg, #fff 40%, rgba(255,255,255,0.55));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 320px;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+  }
+
+  /* ── ETA row ── */
+  .eta-row {
+    font-size: 0.82rem;
+    color: var(--text);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    margin-bottom: 1.25rem;
+    display: none; /* shown via JS only if an ETA is configured */
+  }
+  .eta-row strong { color: var(--accent); font-weight: 600; }
+
+  /* ── Button ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.85rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: inherit;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), #c94e22);
+    color: #fff;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(224,92,42,0.4);
+    width: 100%;
+    justify-content: center;
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(224,92,42,0.55);
+  }
+  .btn:active:not(:disabled) { transform: translateY(0); }
+  .btn:disabled { cursor: default; opacity: 0.85; }
+  .btn:focus-visible {
+    outline: 2px solid var(--accent2);
+    outline-offset: 3px;
+  }
+
+  .btn svg {
+    width: 16px; height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    flex-shrink: 0;
+  }
+
+  /* ── Auto-retry note ── */
+  .auto-retry-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.75rem;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 1.75rem 0;
+  }
+
+  /* ── Info row ── */
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    text-align: left;
+  }
+  .info-row svg {
+    width: 16px; height: 16px;
+    stroke: var(--muted);
+    fill: none;
+    stroke-width: 2;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .info-row span {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .info-row span strong {
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+  }
+  .info-row a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(224,92,42,0.4);
+  }
+  .info-row a:hover { text-decoration-color: var(--accent); }
+
+  /* ── Footer note ── */
+  .footer-note {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--footer);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Visually-hidden live region for screen readers ── */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orb, .card, .icon-wrap, .status-dot { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Particle canvas (decorative only) -->
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<!-- Ambient orbs (decorative only) -->
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Card -->
+<main class="card" role="main">
+
+  <div class="icon-wrap" aria-hidden="true">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </svg>
+  </div>
+
+  <div class="status-pill">
+    <span class="status-dot" aria-hidden="true"></span>
+    Akses Dinonaktifkan
+  </div>
+
+  <h1>Situs Sementara<br>Tidak Dapat Diakses</h1>
+  <p>Halaman ini sedang dalam pemeliharaan atau aksesnya sedang dibatasi. Coba kembali beberapa saat lagi.</p>
+
+  <!-- Filled by JS only if window.SITE_DOWNTIME_CONFIG.etaText is set -->
+  <div class="eta-row" id="etaRow"></div>
+
+  <button class="btn" id="retryBtn" type="button">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+    <span id="retryBtnLabel">Coba Lagi</span>
+  </button>
+
+  <div class="divider"></div>
+
+  <p class="footer-note">ERR_ACCESS_RESTRICTED · <span id="ts"></span></p>
+
+  <!-- Screen-reader-only live status for retry attempts -->
+  <p class="sr-only" id="srStatus" role="status" aria-live="polite"></p>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ──────────────────────────────────────────────────────────
+     CONFIG — edit these to fit your deployment.
+     healthCheckUrl: an endpoint that resolves (any HTTP status
+       reachable, even 503) when the real site is back. If you
+       don't have one, leave null and the button will fall back
+       to a plain reload after a short delay.
+     etaText: optional human-readable ETA, e.g. "sekitar 30 menit".
+       Leave null to hide the ETA row entirely.
+  ────────────────────────────────────────────────────────────── */
+  const CONFIG = {
+    healthCheckUrl: null,          // e.g. "/api/health"
+    etaText: null                  // e.g. "sekitar 30 menit"
+  };
+
+  /* ── Timestamp (label clarifies this is local load time, not a server log) ── */
+  const ts = document.getElementById('ts');
+  ts.textContent = 'Dicek pada ' + new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' });
+
+  /* ── ETA row ── */
+  const etaRow = document.getElementById('etaRow');
+  if (CONFIG.etaText) {
+    etaRow.style.display = 'block';
+    etaRow.innerHTML = 'Estimasi pulih: <strong>' + CONFIG.etaText + '</strong>';
+  }
+
+  /* ── Retry logic with real health-check ── */
+  const retryBtn = document.getElementById('retryBtn');
+  const retryBtnLabel = document.getElementById('retryBtnLabel');
+  const srStatus = document.getElementById('srStatus');
+
+  function setSrStatus(msg) { srStatus.textContent = msg; }
+
+  async function checkHealth() {
+    if (!CONFIG.healthCheckUrl) return true; // no endpoint configured — assume a reload is the best we can do
+    try {
+      const res = await fetch(CONFIG.healthCheckUrl, { method: 'GET', cache: 'no-store' });
+      return res.ok;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  async function attemptRetry() {
+    retryBtn.disabled = true;
+    retryBtnLabel.textContent = 'Memeriksa…';
+    retryBtn.querySelector('svg').style.animation = 'spin .7s linear infinite';
+    setSrStatus('Memeriksa status situs…');
+
+    const ok = await checkHealth();
+
+    if (ok) {
+      setSrStatus('Situs tersedia, memuat ulang…');
+      window.location.reload();
+      return;
+    }
+
+    retryBtn.disabled = false;
+    retryBtnLabel.textContent = 'Coba Lagi';
+    retryBtn.querySelector('svg').style.animation = '';
+    setSrStatus('Situs masih belum dapat diakses.');
+  }
+
+  retryBtn.addEventListener('click', () => attemptRetry());
+
+  /* ── Particle system (decorative, paused when tab hidden, cleans up on unload) ── */
+  const canvas = document.getElementById('bg');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  let rafId = null;
+  let running = false;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    for (const p of particles) {
+      p.x = Math.min(p.x, W);
+      p.y = Math.min(p.y, H);
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    if (reduceMotion) return;
+    const count = Math.min(100, Math.floor((W * H) / 14000));
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.4 + 0.3,
+        dx: (Math.random() - 0.5) * 0.25,
+        dy: (Math.random() - 0.5) * 0.25,
+        alpha: Math.random() * 0.18 + 0.03,
+        hue: Math.random() < 0.15 ? 20 : 0
+      });
+    }
+  }
+
+  function draw() {
+    if (!running) return;
+    ctx.clearRect(0, 0, W, H);
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.hue
+        ? `rgba(255,${140 + p.hue},80,${p.alpha})`
+        : `rgba(255,255,255,${p.alpha})`;
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > W) p.dx *= -1;
+      if (p.y < 0 || p.y > H) p.dy *= -1;
+    }
+    rafId = requestAnimationFrame(draw);
+  }
+
+  function startLoop() {
+    if (running || reduceMotion) return;
+    running = true;
+    rafId = requestAnimationFrame(draw);
+  }
+
+  function stopLoop() {
+    running = false;
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  function handleVisibility() {
+    if (document.hidden) stopLoop();
+    else startLoop();
+  }
+
+  let resizeTimer = null;
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { resize(); initParticles(); }, 150);
+  }
+
+  if (!reduceMotion) {
+    resize();
+    initParticles();
+    startLoop();
+  }
+
+  window.addEventListener('resize', onResize);
+  document.addEventListener('visibilitychange', handleVisibility);
+  window.addEventListener('beforeunload', () => {
+    stopLoop();
+    clearTimeout(resizeTimer);
+    window.removeEventListener('resize', onResize);
+    document.removeEventListener('visibilitychange', handleVisibility);
+  });
+
+  /* ── Spin keyframe for reload icon ── */
+  const spinStyle = document.createElement('style');
+  spinStyle.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(spinStyle);
+})();
+</script>
+</body>
 </html>
